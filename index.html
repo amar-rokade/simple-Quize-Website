@@ -6,11 +6,20 @@
     </head>
     <body>
         <h1 id="heading">WECOME TO COVID19 QUIZE !</h1>
-        <div class="content">
-            <div class="submit">
+        <div style="margin-left: 16%;">
+            <span>
+                <td> <img height="50px" src="user-male.png" alt=""></td>
+                <td><span  id="user_name_second"></span></td>
+            </span>
+            <span  class="timer">
+                <time id="countdown">5:00</time>
+            </span>
+            <span class="submit">
                 <button  onclick="showResults()" id="submit">Submit Quiz</button>
                 <button onclick="Restart()" id="retry">Try again</button>
-            </div>
+            </span>
+        </div>
+        <div class="content">
             <div id="quize_part">
                 <div id="quiz"></div>
                 <div class="bottom_navigator">
@@ -25,4 +34,4 @@
         </div>
     </body>
 </html>
-<script src="index2.js"></script>
+<script src="second.js"></script>

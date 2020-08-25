@@ -194,6 +194,7 @@ function Back_fn(){
 
 //submit quize
 function showResults(){
+  document.getElementById("countdown").style.display = "none";
   document.getElementById('quize_part').style.display = "none";
   document.getElementById('submit').style.display = "none";
   document.getElementById('final').style.visibility = "visible";
@@ -210,9 +211,33 @@ function showResults(){
   document.getElementById("results").innerHTML= `${score} out of ${myQuestions.length}`;
 }
 
+//timmer
+var seconds = 300;
+function secondPassed() {
+    var minutes = Math.round((seconds - 30)/60),
+        remainingSeconds = seconds % 60;
+
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+    }
+
+    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+        //form1 is your form name
+      document.form1.submit();
+    } else {
+        seconds--;
+    }
+}
 
 
+var countdownTimer = setInterval('secondPassed()', 1000);
 const quizContainer = document.getElementById('quiz');
 const next = document.getElementById('next');
 const back = document.getElementById('back');
+const user_name = sessionStorage.getItem("user")
 make_question(0) //on page load to show first questions
+document.getElementById("user_name_second").innerHTML = user_name
+
+//
