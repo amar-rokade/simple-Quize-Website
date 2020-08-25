@@ -8,7 +8,8 @@
         <h1 id="heading">WECOME TO COVID19 QUIZE !</h1>
         <div class="content">
             <div class="submit">
-                <button onclick="showResults()" id="submit">Submit Quiz</button>
+                <button  onclick="showResults()" id="submit">Submit Quiz</button>
+                <button onclick="Restart()" id="retry">Try again</button>
             </div>
             <div id="quize_part">
                 <div id="quiz"></div>
@@ -17,7 +18,10 @@
                     <span > <button onclick="Next_fn()" id="next" data-catid="">Next</button></span>
                  </div>
             </div>
-            <div id="results"></div>
+            <div id="final">
+                <h1>Your Result</h1>
+                <div id="results"> </div>
+            </div>
         </div>
     </body>
 </html>

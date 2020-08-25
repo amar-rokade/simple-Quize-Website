@@ -102,6 +102,10 @@ const myQuestions = [
     },
 ];
 
+function  Restart(){
+  location.reload()
+}
+
 function make_question(a){
   currentQuestion = myQuestions[a]
   const output = [];
@@ -191,6 +195,10 @@ function Back_fn(){
 //submit quize
 function showResults(){
   document.getElementById('quize_part').style.display = "none";
+  document.getElementById('submit').style.display = "none";
+  document.getElementById('final').style.visibility = "visible";
+  document.getElementById('retry').style.visibility = "visible";
+  document.getElementById('heading').innerHTML = "Thank You !";
   var score = 0
   for (ans in user_answers) {
     var re = user_answers[ans]
@@ -199,7 +207,7 @@ function showResults(){
     }
     
    }
-  document.getElementById("results").innerHTML= score
+  document.getElementById("results").innerHTML= `${score} out of ${myQuestions.length}`;
 }
 
 

@@ -71,3 +71,25 @@ color :#a05ead;
 	text-align: center;
 
 }
+#final{
+	text-align:center;
+	font-size: large;
+	visibility: hidden;
+}
+
+#retry{
+	visibility: hidden;
+	font-family: sans-serif;
+	font-size: 20px;
+	background-color: #279;
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+#retry:hover{
+	background-color: #38a;
+}
