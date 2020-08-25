@@ -172,7 +172,6 @@ function Next_fn(){
   Save_answer()
   if (a == 9) {
     document.getElementById("next").disabled = true
-    document.getElementById("next").style.cursor = "normal";
   }
   else{
     document.getElementById("back").disabled = false
