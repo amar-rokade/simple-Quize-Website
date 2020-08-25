@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <title>WELCOME TO COVID19 QUIZE</title>
+    </head>
+    <body>
+        <h1 id="heading">WECOME TO COVID19 QUIZE !</h1>
+        <div class="content">
+            <div class="submit">
+                <button onclick="showResults()" id="submit">Submit Quiz</button>
+            </div>
+            <div id="quize_part">
+                <div id="quiz"></div>
+                <div class="bottom_navigator">
+                    <span ><button id="back" onclick="Back_fn()"  data-catid="">Back</button> </span>
+                    <span > <button onclick="Next_fn()" id="next" data-catid="">Next</button></span>
+                 </div>
+            </div>
+            <div id="results"></div>
+        </div>
+    </body>
+</html>
+<script src="index2.js"></script>
