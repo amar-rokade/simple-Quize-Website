@@ -171,9 +171,11 @@ function Next_fn(){
   a = document.getElementById("next").getAttribute("data-catid");
   Save_answer()
   if (a == 9) {
-    make_question(0);
+    document.getElementById("next").disabled = true
+    document.getElementById("next").style.cursor = "normal";
   }
   else{
+    document.getElementById("back").disabled = false
     make_question(parseInt(a) + 1);
   }
   is_user_alredy_answer(parseInt(a) + 1)
@@ -184,10 +186,11 @@ function Back_fn(){
   a = document.getElementById("back").getAttribute("data-catid");
   Save_answer()
   if (a == 0) {
-    make_question(9);
+    document.getElementById("back").disabled = true
   }
   else{
     make_question(parseInt(a) - 1);
+    document.getElementById("next").disabled = false
   }
   is_user_alredy_answer(parseInt(a) - 1)
 }
