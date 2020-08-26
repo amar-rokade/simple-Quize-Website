@@ -106,6 +106,19 @@ function  Restart(){
   location.reload()
 }
 
+function Side_nav(){
+  const output = [];
+  myQuestions.forEach(
+    (currentQuestion, questionNumber) => {
+       // add this question and its answers to the output
+  output.push(
+    `<div id="side${questionNumber}">
+    <div  class="side_question_class" onclick="make_question(${questionNumber})"  > ${currentQuestion.question} </div>
+    </div>`
+  );
+    });
+    sideQuestion.innerHTML = output.join('');
+}
 function make_question(a){
   currentQuestion = myQuestions[a]
   const output = [];
@@ -129,21 +142,21 @@ function make_question(a){
   quizContainer.innerHTML = output.join('');
   back.setAttribute("data-catid",a)
   next.setAttribute("data-catid",a)
+  is_user_alredy_answer(a)
 }
 
 function is_user_alredy_answer(a){
   for (ans in user_answers) {
-    console.log(ans)
     if (a == ans){
       const rbs = document.querySelectorAll(`input[name='question${a}']`);
-            for (const rb of rbs){
-                var u_ans = user_answers[a]
-                 if (rb.value == u_ans){
-                  document.getElementById(rb.value).checked = true;
-                  break;
-                 }   
-                }
+        for (const rb of rbs){
+            var u_ans = user_answers[a]
+              if (rb.value == u_ans){
+              document.getElementById(rb.value).checked = true;
+              break;
+              }   
             }
+        }
     }
   }
 
@@ -155,6 +168,8 @@ var user_answers ={}
 //save user ans 
 function Save_answer(){
   a = document.getElementById("next").getAttribute("data-catid");
+  var side_id = "side"+a
+  document.getElementById(side_id).style.backgroundColor = "red"
   const rbs = document.querySelectorAll(`input[name='question${a}']`);
       let selectedValue;
       for (const rb of rbs) {
@@ -177,7 +192,7 @@ function Next_fn(){
   else{
     make_question(parseInt(a) + 1);
   }
-  is_user_alredy_answer(parseInt(a) + 1)
+  //is_user_alredy_answer(parseInt(a) + 1)
 }
 
 //back button
@@ -185,12 +200,12 @@ function Back_fn(){
   a = document.getElementById("back").getAttribute("data-catid");
   Save_answer()
   if (a == 0) {
-    make_question(9);
+    
   }
   else{
     make_question(parseInt(a) - 1);
   }
-  is_user_alredy_answer(parseInt(a) - 1)
+  //is_user_alredy_answer(parseInt(a) - 1)
 }
 
 //submit quize
@@ -207,9 +222,16 @@ function showResults(){
     if (re == myQuestions[ans].correctAnswer){
       score++
     }
-    
    }
+ 
+  if (highest_user_score < score || highest_user_name == null){
+    localStorage.setItem("highest_user", user_name);
+    localStorage.setItem("highest_user_score", score);
+  }
   document.getElementById("results").innerHTML= `${score} out of ${myQuestions.length}`;
+  document.getElementById("highest_score_user").innerHTML= `User Name : ${localStorage.getItem("highest_user")}`;
+  document.getElementById("highest_score").innerHTML= `${localStorage.getItem("highest_user_score")} out of ${myQuestions.length}`;
+  console.log("score high:",localStorage.getItem("highest_user_score"),"highest_user:",localStorage.getItem("highest_user"))
 }
 
 //timmer
@@ -235,11 +257,14 @@ function secondPassed() {
 
 
 var countdownTimer = setInterval('secondPassed()', 1000);
+const sideQuestion = document.getElementById('side_questions');
+const highest_user_score = localStorage.getItem("highest_user_score");
 const quizContainer = document.getElementById('quiz');
 const next = document.getElementById('next');
 const back = document.getElementById('back');
-const user_name = sessionStorage.getItem("user")
+const user_name = localStorage.getItem("user")
+const highest_user_name = localStorage.getItem("highest_user")
 make_question(0) //on page load to show first questions
 document.getElementById("user_name_second").innerHTML = user_name
-
+Side_nav()
 //

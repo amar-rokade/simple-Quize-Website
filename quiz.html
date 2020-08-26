@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1 id="heading">WECOME TO COVID19 QUIZE !</h1>
-        <div style="margin-left: 16%;">
+        <div style="margin-left: 30%;">
             <span>
                 <td> <img height="50px" src="user-male.png" alt=""></td>
                 <td><span  id="user_name_second"></span></td>
@@ -19,6 +19,18 @@
                 <button onclick="Restart()" id="retry">Try again</button>
             </span>
         </div>
+        <!-- Side navigation -->
+        <div class="sidenav">
+            <div id="side_questions"></div>
+            <!-- <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a> -->
+        </div>
+  
+        <!-- Page content -->
+        <div class="main">
+
         <div class="content">
             <div id="quize_part">
                 <div id="quiz"></div>
@@ -28,9 +40,27 @@
                  </div>
             </div>
             <div id="final">
-                <h1>Your Result</h1>
-                <div id="results"> </div>
+               
+                <table>
+                    <tr>
+                        <td>
+                            <div id="current_user_result">
+                                <h3>Your Result</h3>
+                                <div id="results"></div>
+                            </div>
+                        </td>
+                        <td >
+                            <div id="not_current">
+                                <h3>Highest score</h3>
+                                <div id="highest_score_user"></div>
+                                <div id="highest_score"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+               
             </div>
+        </div>
         </div>
     </body>
 </html>
