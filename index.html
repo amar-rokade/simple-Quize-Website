@@ -6,32 +6,13 @@
     </head>
     <body>
         <h1 id="heading">WECOME TO COVID19 QUIZE !</h1>
-        <div style="margin-left: 16%;">
-            <span>
-                <td> <img height="50px" src="user-male.png" alt=""></td>
-                <td><span  id="user_name_second"></span></td>
-            </span>
-            <span  class="timer">
-                <time id="countdown">5:00</time>
-            </span>
-            <span class="submit">
-                <button  onclick="showResults()" id="submit">Submit Quiz</button>
-                <button onclick="Restart()" id="retry">Try again</button>
-            </span>
-        </div>
         <div class="content">
-            <div id="quize_part">
-                <div id="quiz"></div>
-                <div class="bottom_navigator">
-                    <span ><button id="back" onclick="Back_fn()"  data-catid="">Back</button> </span>
-                    <span > <button onclick="Next_fn()" id="next" data-catid="">Next</button></span>
-                 </div>
-            </div>
-            <div id="final">
-                <h1>Your Result</h1>
-                <div id="results"> </div>
-            </div>
+            <form id="user_form" action="quiz.html" method="GET">
+                <h5>Please file details</h5>
+                <input id="user_name" type="text" placeholder="Enter your name" required> <br> <br>
+                <input id="submit" type="submit" value="Start quiz">
+            </form>
         </div>
     </body>
 </html>
-<script src="second.js"></script>
+<script src="first.js"></script>
