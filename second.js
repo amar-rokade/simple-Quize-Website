@@ -118,7 +118,7 @@ function make_question(a){
         <input type="radio" name="question${a}" onclick="Save_answer()" id="${letter}" value="${letter}">
         ${letter} :
         ${currentQuestion.answers[letter]}
-      </label><br>`
+      </label>`
     );
   }
   // add this question and its answers to the output
@@ -171,7 +171,8 @@ function Next_fn(){
   a = document.getElementById("next").getAttribute("data-catid");
   Save_answer()
   if (a == 9) {
-    make_question(0);
+    //make_question(0);
+    alert('It was last question.. Please then submit your test if you complete!')
   }
   else{
     make_question(parseInt(a) + 1);
@@ -199,7 +200,7 @@ function showResults(){
   document.getElementById('submit').style.display = "none";
   document.getElementById('final').style.visibility = "visible";
   document.getElementById('retry').style.visibility = "visible";
-  document.getElementById('heading').innerHTML = "Thank You !";
+  document.getElementById('heading').innerHTML = "Thank You "+user_name+" !";
   var score = 0
   for (ans in user_answers) {
     var re = user_answers[ans]
@@ -223,9 +224,10 @@ function secondPassed() {
 
     document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
     if (seconds == 0) {
-        clearInterval(countdownTimer);
-        //form1 is your form name
-      document.form1.submit();
+        clearInterval();
+        //alert("Opps! time is up..")
+       showResults()
+      countdownTimer
     } else {
         seconds--;
     }

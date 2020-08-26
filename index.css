@@ -116,3 +116,13 @@ text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;}
 	color:white;
 	font-weight: bolder;
 }
+
+label:hover{
+   background-color: #393c63;
+   cursor: pointer;
+
+}
+label{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
