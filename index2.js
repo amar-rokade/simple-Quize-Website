@@ -118,7 +118,7 @@ function make_question(a){
         <input type="radio" name="question${a}" onclick="Save_answer()" id="${letter}" value="${letter}">
         ${letter} :
         ${currentQuestion.answers[letter]}
-      </label><br>`
+      </label>`
     );
   }
   // add this question and its answers to the output

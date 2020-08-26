@@ -94,3 +94,13 @@ color :#a05ead;
 #retry:hover{
 	background-color: #38a;
 }
+
+label:hover{
+	background-color: #393c63;
+	cursor: pointer;
+}
+label{
+	padding-top:10px;
+	padding-bottom: 10px;
+	
+}
