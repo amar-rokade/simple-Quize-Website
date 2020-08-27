@@ -114,10 +114,10 @@ function make_question(a){
     //colsole.log(letter)
     // ...add an HTML radio button
     answers.push(
-      `<label>
-        <input type="radio" name="question${a}" onclick="Save_answer()" id="${letter}" value="${letter}">
-        ${letter} :
-        ${currentQuestion.answers[letter]}
+      `<label id="${letter}">
+        <input type="radio" name="question${a}" onclick="Save_answer()"  value="${letter}">
+         ${letter} :
+         ${currentQuestion.answers[letter]}
       </label>`
     );
   }
@@ -133,7 +133,6 @@ function make_question(a){
 
 function is_user_alredy_answer(a){
   for (ans in user_answers) {
-    console.log(ans)
     if (a == ans){
       const rbs = document.querySelectorAll(`input[name='question${a}']`);
             for (const rb of rbs){
@@ -160,9 +159,23 @@ function Save_answer(){
       for (const rb of rbs) {
           if (rb.checked) {
               selectedValue = rb.value;
+              //console.log("select",myQuestions[a].correctAnswer)
               user_answers[a] = selectedValue;
               break;
           }
+      }
+      for (const rb of rbs) {
+        if(rb.value == myQuestions[a].correctAnswer){
+          document.getElementById(rb.value).style.backgroundColor = "lightgreen";
+        }
+        else{
+          document.getElementById(rb.value).style.backgroundColor = "red";
+        }
+      }
+      for (const rb of rbs) {
+        if(!rb.checked){
+          document.getElementById(rb.value).style.backgroundColor = "";
+        }
       }
 }
 
@@ -211,8 +224,6 @@ function showResults(){
    }
   document.getElementById("results").innerHTML= `${score} out of ${myQuestions.length}`;
 }
-
-
 
 const quizContainer = document.getElementById('quiz');
 const next = document.getElementById('next');
