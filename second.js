@@ -1,4 +1,4 @@
-const myQuestions = [
+const Questions = [
     
     {
       question: "Which tool can Thailand announced that it has proceeded to test its novel coronavirus vaccine on which animal/bird? use to ensure code quality?",
@@ -227,11 +227,12 @@ function showResults(){
   if (highest_user_score < score || highest_user_name == null){
     localStorage.setItem("highest_user", user_name);
     localStorage.setItem("highest_user_score", score);
+    localStorage.setItem("date", new Date());
   }
   document.getElementById("results").innerHTML= `${score} out of ${myQuestions.length}`;
   document.getElementById("highest_score_user").innerHTML= `User Name : ${localStorage.getItem("highest_user")}`;
-  document.getElementById("highest_score").innerHTML= `${localStorage.getItem("highest_user_score")} out of ${myQuestions.length}`;
-  console.log("score high:",localStorage.getItem("highest_user_score"),"highest_user:",localStorage.getItem("highest_user"))
+  document.getElementById("highest_score").innerHTML= `${localStorage.getItem("highest_user_score")} out of ${myQuestions.length} <br>  on ${localStorage.getItem("date")}`;
+  //console.log("score high:",localStorage.getItem("highest_user_score"),"highest_user:",localStorage.getItem("highest_user"))
 }
 
 //timmer
@@ -256,6 +257,25 @@ function secondPassed() {
 }
 
 
+
+function random_item(a){
+    return Questions[a];   
+}
+var myQuestions = []
+if(localStorage.getItem("order")== 1){
+  for (var i=0;i<10;i++){
+    myQuestions.push(random_item(i))
+  }
+    localStorage.setItem("order", "0");
+
+}
+else{
+  for (var i=9;i>=0;i--){
+    myQuestions.push(random_item(i))
+  }
+  localStorage.setItem("order", "1");
+}
+
 var countdownTimer = setInterval('secondPassed()', 1000);
 const sideQuestion = document.getElementById('side_questions');
 const highest_user_score = localStorage.getItem("highest_user_score");
@@ -268,3 +288,5 @@ make_question(0) //on page load to show first questions
 document.getElementById("user_name_second").innerHTML = user_name
 Side_nav()
 //
+
+//console.log( Math.floor(Math.random() * 10));
